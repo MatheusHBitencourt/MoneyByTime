@@ -9,6 +9,21 @@ body{
   background-color: var(--absolute-black);
 }
 
+button{
+  height: 3rem;
+  margin-top: 30px;
+  background-color: blueviolet;
+  font-size: 30px;
+  color: #fff;
+  border: none ;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+button:hover{
+  transform: scale(1.03);
+}
+
 header{
   /* Text  */
   color: var(--absolute-green);
@@ -22,17 +37,40 @@ header{
   padding: 1.5rem;
 }
 
-main{
 
-  width: 50rem;
-  height: 50rem;
-  margin-left: auto;
-  margin-right: auto;
+main{
   /* Flexbox */
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
+
+  /* Sizes */
+  width: 35rem;
+  height: 38rem;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid;
+
   /* Style */
   background-color: var(--absolute-white);
+  border-radius: 16px;
+
+}
+
+input{
+
+  height: 3rem;
+  font-size: 20px;
+  margin-top:20px;
+}
+
+label{
+  font-size: 2.0em;
+  margin-top: 20px;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
 }

@@ -1,50 +1,58 @@
 import "./App.css";
-import { useState } from "react";
+import React, {useState} from "react";
 
-function App() {
-  const [salary, setSalary] = useState(0);
+const App = () => {
+  const [salary, setSalary] = useState("");
   const [hoursPeerWeek, setHoursPeerWeek] = useState(0);
   const [productPrice, setProductPrice] = useState(0);
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState("");
 
-  function calculate(event) {
+  const salaryMask = (event) => {
+    const value = event.target.value;
+    const friendlyValue = value
+      .replace(/\D/g, "")
+      .replace(/(\d{1})(\d)(\d)/, "R$ $1,$2$3")
+    setSalary(friendlyValue);
+    console.log(salary);
+  };
+
+  const calculate = (event) => {
     event.preventDefault();
     const hourPriceCalculation = salary / (hoursPeerWeek * 4);
     const resultCalculation = productPrice / hourPriceCalculation;
     setResult(resultCalculation);
-  }
+  };
 
   return (
     <>
-    <header>
-      Money By Hour Calculator
-    </header>
+      <header>Buy by hour</header>
       <main>
         <form onSubmit={calculate}>
-          <label>Salary</label>
+          <label>Salary:</label>
           <input
+            onChange={salaryMask}
+            type="text"
             value={salary}
-            onChange={(event) => {
-              setSalary(event.target.value);
-            }}
-            type="number"
+            placeholder="Enter your salary"
+            required
           />
 
-          <label> Worked hours by week</label>
+          <label> Worked hours by week :</label>
           <input
-            value={hoursPeerWeek}
             onChange={(event) => {
               setHoursPeerWeek(event.target.value);
             }}
             type="number"
+            placeholder="Enter your worked hours"
           />
 
-          <label>Desired product price</label>
+          <label>Desired product price:</label>
           <input
             onChange={(event) => {
               setProductPrice(event.target.value);
             }}
             type="number"
+            placeholder="Enter your desired product price"
           />
 
           <button type="submit">Calculate</button>
@@ -56,6 +64,6 @@ function App() {
       </main>
     </>
   );
-}
+};
 
 export default App;
