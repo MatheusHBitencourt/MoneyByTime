@@ -11,7 +11,7 @@ const App = () => {
     const value = event.target.value;
     const friendlyValue = value
       .replace(/\D/g, "")
-      .replace(/(\d{1})(\d)(\d)/, "R$ $1,$2$3")
+      .replace(/(^[0])(\d{2})+?$/, "R$ $1,$2")
     setSalary(friendlyValue);
     console.log(salary);
   };
